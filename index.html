@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app= 'myApp'>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href='app.css'>
     <title>Reddit</title>
   </head>
-  <body>
+  <body ng-controller = 'MainController'>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -22,7 +23,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <li class="active"><a href="#" ng-click='toggleForm()'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 Submit</a></li>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -30,38 +31,52 @@ Submit</a></li>
             </div>
           </form>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort by {{ dropdown }} <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Votes</a></li>
-                <li><a href="#">Date</a></li>
-                <li><a href="#">Title</a></li>
-              </ul>
+            <dropdown class="dropdown-toggle" type="dropdown" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Dropdown {{menuItem}}
+              <span class="caret"></span>
+            </dropdown>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">Votes</a></li>
+              <li><a href="#">Date</a></li>
+              <li><a href="#">Title</a></li>
+            </ul>
+          </li>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    {{3+4}}
     <div class='container'>
-      <form ng-model= 'formShow'>
+      <form ng-show ='showForm'>
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" placeholder="Title">
+          <input ng-model='title' type="text" class="form-control" id="title" placeholder="Title">
         </div>
         <div class="form-group">
           <label for="author">Author</label>
-          <input type="text" class="form-control" id="author" placeholder="Author">
+          <input ng-model='author' type="text" class="form-control" id="author" placeholder="Author">
         </div>
         <div class="form-group">
           <label for="image">Image</label>
-          <input type="text" class="form-control" id="image" placeholder="Image">
+          <input ng-model='image' type="text" class="form-control" id="image" placeholder="Image">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="text" class="form-control" id="description" placeholder="Description">
+          <input ng-model='description' type="text" class="form-control" id="description" placeholder="Description">
         </div>
-
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" ng-click="submitPost()" class="btn btn-default">Submit</button>
       </form>
+      <div ng-repeat='post in posts'>
+        <div class="well">
+          <p>
+          <img class="thumbnail" src='{{post.image}}' />
+          <h3>{{post.title}} <small>posted by - {{post.author}}</small></h3>
+          {{post.author}}
+          {{post.description}}
+          </p>
+        </div>
+      </div>
     </div>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src='app.js'></script>
     <script type="text/javascript" src='bower_components/jquery/dist/jquery.min.js'></script>
     <script type="text/javascript" src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
   </body>
