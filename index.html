@@ -30,14 +30,14 @@ Submit</a></li>
               <input type="text" class="form-control" placeholder="Search">
             </div>
           </form>
-          <li class="dropdown">
-            <dropdown class="dropdown-toggle" type="dropdown" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Dropdown {{menuItem}}
+          <li class="dropdown" ng-model='dropdown'>
+            <dropdown class="dropdown-toggle" type="dropdown" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Sort by {{dropdown}}
               <span class="caret"></span>
             </dropdown>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Votes</a></li>
-              <li><a href="#">Date</a></li>
-              <li><a href="#">Title</a></li>
+              <li><a href="#" ng-click='sortByVotes()'>Votes</a></li>
+              <li><a href="#" ng-click='sortByVotes()'>Date</a></li>
+              <li><a href="#" ng-click='sortByVotes()'>Title</a></li>
             </ul>
           </li>
         </div><!-- /.navbar-collapse -->
@@ -68,8 +68,10 @@ Submit</a></li>
         <div class="well">
           <p>
           <img class="thumbnail" src='{{post.image}}' />
-          <h3>{{post.title}} <small>posted by - {{post.author}}</small></h3>
-          {{post.author}}
+          <h3>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+          
+          <small class='posted'>By - {{post.author}}</small></h3>
           {{post.description}}
           </p>
         </div>
