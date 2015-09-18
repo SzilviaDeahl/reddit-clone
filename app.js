@@ -11,17 +11,23 @@ app.controller('MainController', function ($scope) {
   $scope.posts = [];
 
   $scope.submitPost = function () {
-    var entry = {title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description}
+    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description}
     $scope.posts.push(entry);
     console.log($scope.image);
-  },
+  }
   $scope.dropdown;
 
   $scope.sortByVotes = function () {
     $scope.dropdown;
-  },
-
-  $scope.counter = function () {
-    $scope.start = 0;
   }
+
+  $scope.upVote = function (object){
+    object.count +=1;
+  }
+
+  $scope.downVote = function (object) {
+    object.count -=1;
+  }
+
+
 })

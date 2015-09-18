@@ -68,11 +68,11 @@ Submit</a></li>
         <div class="well">
           <p>
           <img class="thumbnail" src='{{post.image}}' />
-          <h3>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-          <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-          
+          <h3>{{post.title}} | <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click = 'upVote(post)'></span>
+          <span class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click = 'downVote(post)'></span>
+          <span ng-style = "post.count < 0 && {'color': 'red' } || post.count > 0 && { 'color': 'green'}">{{post.count}}</span>
           <small class='posted'>By - {{post.author}}</small></h3>
-          {{post.description}}
+          {{ post.description }}
           </p>
         </div>
       </div>
