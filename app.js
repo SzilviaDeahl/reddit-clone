@@ -11,7 +11,7 @@ app.controller('MainController', function ($scope) {
   $scope.posts = [];
 
   $scope.submitPost = function () {
-    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description}
+    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description, date: $scope.date}
     $scope.posts.push(entry);
     console.log($scope.image);
   }

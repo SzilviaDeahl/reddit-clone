@@ -73,6 +73,7 @@ Submit</a></li>
           <span ng-style = "post.count < 0 && {'color': 'red' } || post.count > 0 && { 'color': 'green'}">{{post.count}}</span>
           <small class='posted'>By - {{post.author}}</small></h3>
           {{ post.description }}
+          {{ date | date : format : timezone}}
           </p>
         </div>
       </div>
