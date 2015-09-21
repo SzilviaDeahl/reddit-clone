@@ -17,8 +17,8 @@ app.controller('MainController', function ($scope) {
   }
   $scope.dropdown;
 
-  $scope.sortByVotes = function () {
-    $scope.dropdown;
+  $scope.sortByVotes = function (sortValue) {
+    $scope.dropdown = sortValue;
   }
 
   $scope.upVote = function (object){
