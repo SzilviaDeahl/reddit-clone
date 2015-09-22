@@ -8,15 +8,21 @@ app.controller('MainController', function ($scope) {
   $scope.showComment = 'false';
   $scope.toggleForm = function () {
     $scope.showForm = !$scope.showForm;
+  }
+  $scope.toggleComment = function () {
     $scope.showComment = !$scope.showComment;
+  }
+
+  $scope.toggleComments = function () {
+    $scope.showComments = !showComments;
   }
   $scope.posts = [];
 
   $scope.submitPost = function () {
-    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description, date: $scope.date}
+    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description, date: $scope.date, comments: $scope.comments}
     $scope.posts.push(entry);
-    console.log($scope.image);
   }
+
   $scope.dropdown;
 
   $scope.sortByVotes = function (sortValue) {
@@ -31,4 +37,14 @@ app.controller('MainController', function ($scope) {
     object.count -=1;
   }
 
+  $scope.comments = [];
+
+  $scope.submitComment = function () {
+    var entry = {authorC: $scope.authorC, text: $scope.text}
+    $scope.comments.push(entry);
+  }
+
+  // $scope.comments = function (comment) {
+  //   comment.count +=1;
+  // }
 });

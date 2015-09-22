@@ -73,17 +73,21 @@ Submit</a></li>
             <span ng-style = "post.count < 0 && {'color': 'red' } || post.count > 0 && { 'color': 'green'}">{{post.count}}</span>
             <small class='posted'>By - {{post.author}}</small></h3>
             {{ post.description }}
-            <span>{{ date | date }}</span>
-            <p ng-repeat='comment in comments'>
-              | {{ post.comments}} |
-            </p>
-            <p ng-click='toggleForm()'>
-              <span class="glyphicon glyphicon-pencil" aria-hidden="true"> Add Comment</span>
-              <label for='authorC'>Author</label>
-              <input ng-model='authorC' type='text' id='authorC'>
-              <label for='text'>Text</label>
-              <input ng-model='text' type='text' id='text'>
-              <button type='submit' value='Add Comment'></button>
+              <p>
+                <span class="glyphicon glyphicon-calendar">{{date}}</span>
+                | <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                    <span ng-repeat = 'comment in comments' ng-show='showComments'>{{comment.authorC}} {{comment.text}}</span>
+                    comments
+                |
+                <span ng-click='toggleComment()' class="glyphicon glyphicon-pencil" aria-hidden="true">Add Comment</span>
+                <p ng-show='showComment'>
+                  <label for='authorC'>Author</label>
+                  <input ng-model='authorC' type='text' id='authorC'>
+                  <label for='text'>Text</label>
+                  <input ng-model='text' type='text' id='text'>
+                  <button type="submit" ng-click="submitComment()" class="btn btn-default">Submit</button>
+                </p>
+              </p>
             </p>
           </p>
         </div>
