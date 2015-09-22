@@ -5,8 +5,10 @@
 var app = angular.module('myApp', []);
 app.controller('MainController', function ($scope) {
   $scope.showForm = 'false';
+  $scope.showComment = 'false';
   $scope.toggleForm = function () {
     $scope.showForm = !$scope.showForm;
+    $scope.showComment = !$scope.showComment;
   }
   $scope.posts = [];
 
@@ -29,5 +31,4 @@ app.controller('MainController', function ($scope) {
     object.count -=1;
   }
 
-
-})
+});
