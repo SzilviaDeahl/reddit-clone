@@ -48,19 +48,19 @@ Submit</a></li>
       <form ng-show ='showForm'>
         <div class="form-group">
           <label for="title">Title</label>
-          <input ng-model='title' type="text" class="form-control" id="title" placeholder="Title">
+          <input ng-model='post.title' type="text" class="form-control" id="title" placeholder="Title" autofocus>
         </div>
         <div class="form-group">
           <label for="author">Author</label>
-          <input ng-model='author' type="text" class="form-control" id="author" placeholder="Author">
+          <input ng-model='post.author' type="text" class="form-control" id="author" placeholder="Author">
         </div>
         <div class="form-group">
           <label for="image">Image</label>
-          <input ng-model='image' type="text" class="form-control" id="image" placeholder="Image">
+          <input ng-model='post.image' type="text" class="form-control" id="image" placeholder="Image">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input ng-model='description' type="text" class="form-control" id="description" placeholder="Description">
+          <input ng-model='post.description' type="text" class="form-control" id="description" placeholder="Description">
         </div>
         <button type="submit" ng-click="submitPost()" class="btn btn-default">Submit</button>
       </form>
@@ -74,21 +74,26 @@ Submit</a></li>
             <small class='posted'>By - {{post.author}}</small></h3>
             {{ post.description }}
               <p>
-                <span class="glyphicon glyphicon-calendar">{{date}}</span>
-                | <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                    <span ng-repeat = 'comment in comments' ng-show='showComments'>{{comment.authorC}} {{comment.text}}</span>
-                    comments
+                <span class="glyphicon glyphicon-calendar">Today</span>
                 |
-                <span ng-click='toggleComment()' class="glyphicon glyphicon-pencil" aria-hidden="true">Add Comment</span>
-                <p ng-show='showComment'>
-                  <label for='authorC'>Author</label>
-                  <input ng-model='authorC' type='text' id='authorC'>
-                  <label for='text'>Text</label>
-                  <input ng-model='text' type='text' id='text'>
-                  <button type="submit" ng-click="submitComment()" class="btn btn-default">Submit</button>
-                </p>
+                  <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <form ng-repeat = 'comment in comments' ng-show='showComments'>
+                    <span >{{comment.author}} {{comment.body}}</span>
+                |
+                </form>
+                    comments
+                <span ng-click='toggleComment()' class="glyphicon glyphicon-pencil" aria-hidden="true"> Add Comment</span>
+                  <p>
+                  <form ng-submit="submitComment(post)" ng-show='showComment' ng-hide="hideform" id="newTaskForm">
+                    <label for='authorC'>Author</label>
+                    <input ng-model='comment.author' type='text' id='authorC' autofocus>
+                    <label for='text'>Text</label>
+                    <input ng-model='comment.body' type='text' id='text'>
+                    <input type="submit" class="btn btn-default"></input>
+                  </form>
+                  </p>
+                  <!-- {{comment.author}} {{comment.body}} -->
               </p>
-            </p>
           </p>
         </div>
       </div>

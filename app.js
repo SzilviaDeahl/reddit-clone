@@ -4,23 +4,39 @@
 
 var app = angular.module('myApp', []);
 app.controller('MainController', function ($scope) {
-  $scope.showForm = 'false';
-  $scope.showComment = 'false';
+  $scope.showForm = false;
+  $scope.showComment = false;
+
   $scope.toggleForm = function () {
     $scope.showForm = !$scope.showForm;
   }
   $scope.toggleComment = function () {
-    $scope.showComment = !$scope.showComment;
+    this.showComment = !this.showComment;
+
   }
 
   $scope.toggleComments = function () {
-    $scope.showComments = !showComments;
+    this.showComments = this.Comments;
   }
-  $scope.posts = [];
+  $scope.posts = [{
+    title: "Snow",
+    author: "Yo Mama",
+    image: 'https://upload.wikimedia.org/wikipedia/commons/b/be/Snowboard-In-The-Snow-2008.jpg',
+    description: "I love CO in the winter!",
+    comments: []
+  },
+  {
+    title: "Autumn",
+    author: "Yo Sista",
+    image: 'http://www.jensart.com/_07images/07B005_celebrations_of_fall.jpg',
+    description: "I love CO in the fall!",
+    comments: []
+  }
+  ];
 
   $scope.submitPost = function () {
-    var entry = {count: 0, title: $scope.title, author: $scope.author, image: $scope.image, description: $scope.description, date: $scope.date, comments: $scope.comments}
-    $scope.posts.push(entry);
+    $scope.comments = [];
+    $scope.posts.push($scope.post);
   }
 
   $scope.dropdown;
@@ -37,11 +53,16 @@ app.controller('MainController', function ($scope) {
     object.count -=1;
   }
 
-  $scope.comments = [];
+  // $scope.comments = [];
 
-  $scope.submitComment = function () {
-    var entry = {authorC: $scope.authorC, text: $scope.text}
-    $scope.comments.push(entry);
+  $scope.submitComment = function (post) {
+    console.log("** POST **");
+    console.log(post);
+    console.log('** SCOPE VARIABLES **');
+    console.log(this.comment)
+    this.hideform = true;
+    // var entry = {authorC: $scope.authorC, text: $scope.text}
+    // post.comments.push(entry);
   }
 
   // $scope.comments = function (comment) {
