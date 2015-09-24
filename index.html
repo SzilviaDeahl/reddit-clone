@@ -76,12 +76,8 @@ Submit</a></li>
               <p>
                 <span class="glyphicon glyphicon-calendar">Today</span>
                 |
-                  <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                <form ng-repeat = 'comment in comments' ng-show='showComments'>
-                    <span >{{comment.author}} {{comment.body}}</span>
+                <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"> 0 comments</span>
                 |
-                </form>
-                    comments
                 <span ng-click='toggleComment()' class="glyphicon glyphicon-pencil" aria-hidden="true"> Add Comment</span>
                   <p>
                   <form ng-submit="submitComment(post)" ng-show='showComment' ng-hide="hideform" id="newTaskForm">
@@ -89,10 +85,13 @@ Submit</a></li>
                     <input ng-model='comment.author' type='text' id='authorC' autofocus>
                     <label for='text'>Text</label>
                     <input ng-model='comment.body' type='text' id='text'>
-                    <input type="submit" class="btn btn-default"></input>
+                    <input type="submit" class="btn btn-default" value='Add Comment'></input>
+                  </form>
+                  <form ng-repeat = 'comment in comments' ng-show='showComments'>
+                    <span class='bold'>{{comment.author}}</span> - <span>{{comment.body}}</span>
                   </form>
                   </p>
-                  <!-- {{comment.author}} {{comment.body}} -->
+                  <!-- <span class= 'bold'>{{comment.author}}</span>  - {{comment.body}} -->
               </p>
           </p>
         </div>

@@ -17,3 +17,7 @@
 .posted {
   float: right;
 }
+
+.bold {
+  font-weight: bold;
+}

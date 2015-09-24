@@ -6,18 +6,19 @@ var app = angular.module('myApp', []);
 app.controller('MainController', function ($scope) {
   $scope.showForm = false;
   $scope.showComment = false;
+  $scope.showComments = false;
 
   $scope.toggleForm = function () {
     $scope.showForm = !$scope.showForm;
   }
   $scope.toggleComment = function () {
     this.showComment = !this.showComment;
-
   }
 
   $scope.toggleComments = function () {
-    this.showComments = this.Comments;
+    this.showComments = !this.showComments;
   }
+
   $scope.posts = [{
     title: "Snow",
     author: "Yo Mama",
@@ -35,8 +36,9 @@ app.controller('MainController', function ($scope) {
   ];
 
   $scope.submitPost = function () {
-    $scope.comments = [];
+    // $scope.comments = []; original version
     $scope.posts.push($scope.post);
+    // $scope.comments.push($scope.comment); original version
   }
 
   $scope.dropdown;
@@ -55,11 +57,15 @@ app.controller('MainController', function ($scope) {
 
   // $scope.comments = [];
 
-  $scope.submitComment = function (post) {
+  $scope.submitComment = function (post, comment, comments) {
+    $scope.comments = [];
+    this.comments.push(this.comment);
     console.log("** POST **");
     console.log(post);
     console.log('** SCOPE VARIABLES **');
     console.log(this.comment)
+    console.log('*** CommentsArray ***');
+    console.log(this.comments);
     this.hideform = true;
     // var entry = {authorC: $scope.authorC, text: $scope.text}
     // post.comments.push(entry);
