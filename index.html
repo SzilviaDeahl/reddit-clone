@@ -80,7 +80,7 @@ Submit</a></li>
                 |
                 <span ng-click='toggleComment()' class="glyphicon glyphicon-pencil" aria-hidden="true"> Add Comment</span>
                   <p>
-                  <form ng-submit="submitComment(post)" ng-show='showComment' ng-hide="hideform" id="newTaskForm">
+                  <form ng-submit="submitComment(post, comment, comments)" ng-show='showComment' ng-hide="hideform" id="newTaskForm">
                     <label for='authorC'>Author</label>
                     <input ng-model='comment.author' type='text' id='authorC' autofocus>
                     <label for='text'>Text</label>
@@ -89,7 +89,7 @@ Submit</a></li>
                   </form>
                   <form ng-repeat = 'comment in comments' ng-show='showComments'>
                     <span class='bold'>{{comment.author}}</span> - <span>{{comment.body}}</span>
-                  </form>
+                </form>
                   </p>
                   <!-- <span class= 'bold'>{{comment.author}}</span>  - {{comment.body}} -->
               </p>

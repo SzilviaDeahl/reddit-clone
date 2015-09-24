@@ -38,6 +38,8 @@ app.controller('MainController', function ($scope) {
   $scope.submitPost = function () {
     // $scope.comments = []; original version
     $scope.posts.push($scope.post);
+    // $scope.comments.push(this.comment);
+
     // $scope.comments.push($scope.comment); original version
   }
 
@@ -57,8 +59,8 @@ app.controller('MainController', function ($scope) {
 
   // $scope.comments = [];
 
-  $scope.submitComment = function (post, comment, comments) {
     $scope.comments = [];
+  $scope.submitComment = function (post, comment, comments) {
     this.comments.push(this.comment);
     console.log("** POST **");
     console.log(post);
