@@ -74,7 +74,17 @@ Submit</a></li>
             <small class='posted'>By - {{post.author}}</small></h3>
             {{ post.description }}
               <p>
-                <span class="glyphicon glyphicon-calendar">Today</span>
+                <span class="glyphicon glyphicon-calendar"><time>{{ main.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</time>
+                  <!-- <div class="container" ng-app="timeApp" ng-controller="mainController as main">
+
+                    <div class="jumbotron">
+                      <p>The time is {{ main.time }}</p>
+                    </div>
+
+                    <!-- show our relative times here -->
+
+                  </div> -->
+                </span>
                 |
                 <span ng-click='toggleComments()' class="glyphicon glyphicon-comment" aria-hidden="true"> 0 comments</span>
                 |
@@ -101,5 +111,7 @@ Submit</a></li>
     <script type="text/javascript" src='app.js'></script>
     <script type="text/javascript" src='bower_components/jquery/dist/jquery.min.js'></script>
     <script type="text/javascript" src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
   </body>
 </html>
